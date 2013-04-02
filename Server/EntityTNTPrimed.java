@@ -31,6 +31,10 @@ public class EntityTNTPrimed extends Entity
     }
 
     protected void entityInit() {}
+    /**
+     * Checks if this entity is inside water (if inWater field is true as a result of handleWaterMovement() returning
+     * true)
+     */
 
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
@@ -87,8 +91,16 @@ public class EntityTNTPrimed extends Entity
 
     private void explode()
     {
-        float var1 = 4.0F;
-        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, var1, true);
+    	int var17 = this.rand.nextInt(10);
+		if (inWater = true)
+        {
+              this.dropItem(Item.fishRaw.itemID, var17);
+        }
+		else
+		{
+			float var1 = 4.0F;
+			this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, var1, true);
+		}
     }
 
     /**
