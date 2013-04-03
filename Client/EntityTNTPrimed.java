@@ -85,10 +85,18 @@ public class EntityTNTPrimed extends Entity
         }
     }
 
-    private void explode()
+       private void explode()
     {
-        float var1 = 4.0F;
-        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, var1, true);
+		if (inWater = true)
+        {
+			int var17 = this.rand.nextInt(10);
+            this.dropItem(Item.fishRaw.itemID, var17);
+        }
+		else
+		{
+			float var1 = 4.0F;
+			this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, var1, true);
+		}
     }
 
     /**
